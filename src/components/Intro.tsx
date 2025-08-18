@@ -43,7 +43,7 @@ export default function Intro() {
           {/* Bio */}
           <div className="mt-6 space-y-3 text-md leading-6 text-zinc-300">
             <p>
-            Intern @DRDO 🎓 | SIH '23 WINNER 🏆, SIH '24 ( ISRO ) Finalist🏅| Core Member @GDGC '24, @SHEBUILDS | Hackathons Won(x4), Organized(x2) </p>
+            Intern @DRDO 🎓 | SIH &#39;23 WINNER 🏆, SIH &#39;24 ( ISRO ) Finalist🏅| Core Member @GDGC &#39;24, @SHEBUILDS | Hackathons Won(x4), Organized(x2) </p>
             <p>
               Freelanced with 5+ clients, and built tools like{' '}
               <Link
@@ -59,6 +59,8 @@ export default function Intro() {
               >
                 Grievance Portal
               </Link>{' '}
+
+              
               to solve real-world problems with clean, scalable solutions.
             </p>
             <p>Always building, always learning. ⚒️</p>

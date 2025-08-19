@@ -11,8 +11,10 @@ const Navbar = () => {
       {/* Top quick links */}
       <nav className="relative mx-auto rounded-xl bg-gradient-to-l from-white/5 to-white/0 backdrop-blur-sm px-3 py-2.5 text-sm text-white shadow-sm sm:px-4 sm:py-3 sm:text-base">
         <div className="flex items-center justify-between">
-          <h1 className='text-xl first-letter:text-rose-600 font-bold'>My Portfolio</h1>
-
+          <h1 className='text-xl first-letter:text-rose-600 font-bold'>
+            <Link href="/" aria-label="Home">My Portfolio</Link>
+          </h1>
+          
           {/* Desktop links */}
           <ul className="hidden md:flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <li>

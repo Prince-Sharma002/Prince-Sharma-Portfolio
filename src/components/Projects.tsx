@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, type Variants } from 'framer-motion'
 
 
@@ -28,7 +29,7 @@ const projects: Project[] = [
     tech: ['NextJS', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', "ReactFlow", "Leaflet", "Cryptojs"],
     demo: 'https://geo-mesh-front.vercel.app/',
     github: 'https://github.com/Prince-Sharma002/GeoMesh-Front',
-    image: '/segmap.png',
+    image: '/project/segmap.png',
   },
   {
     title: 'Complain Portal 📬',
@@ -38,27 +39,27 @@ const projects: Project[] = [
     tech: ['ReactJS', 'MapBox', 'NodeJS', 'MongoDB', 'ExpressJS', 'Tailwind CSS'],
     demo: 'https://complain-frontend.vercel.app/',
     github: 'https://github.com/Prince-Sharma002/Complain-Portal-MERN',
-    image: '/complainbox.png',
+    image: '/project/complainbox.png',
   },
   {
-    title: 'Complain Portal 📬',
+    title: 'Sofia 🤖',
     date: 'May 2025',
     description:
-      'Streamline your complaint box with a dashboard and dynamic map. Notify users of complaint progress via email for transparency and efficiency.',
-    tech: ['ReactJS', 'MapBox', 'NodeJS', 'MongoDB', 'ExpressJS', 'Tailwind CSS'],
-    demo: 'https://complain-frontend.vercel.app/',
-    github: 'https://github.com/Prince-Sharma002/Complain-Portal-MERN',
-    image: '/complainbox.png',
+      'A Google PaLM API-based Conversational Chatbot with voice input/output and image processing.',
+    tech: ['ReactJS', 'Boostrap', 'Google PaLM API', 'LocalStorage', 'SpeechRecognition' ],
+    demo: 'https://palmapi-67c47.web.app/',
+    github: 'https://tinyurl.com/35panaf8',
+    image: '/project/sofia.png',
   },
   {
-    title: 'Complain Portal 📬',
+    title: 'Hacknovate 6.0 official Website 📬',
     date: 'May 2025',
     description:
-      'Streamline your complaint box with a dashboard and dynamic map. Notify users of complaint progress via email for transparency and efficiency.',
-    tech: ['ReactJS', 'MapBox', 'NodeJS', 'MongoDB', 'ExpressJS', 'Tailwind CSS'],
-    demo: 'https://complain-frontend.vercel.app/',
-    github: 'https://github.com/Prince-Sharma002/Complain-Portal-MERN',
-    image: '/complainbox.png',
+      'Developed the official website for Hacknovate 6.0.The platform served as a hub for event details, registrations, and updates',
+    tech: ['ReactJS', 'Tailwind CSS', 'Framer Motion', 'Magic UI'],
+    demo: 'https://hacknovate6-0.vercel.app/',
+    github: 'https://github.com/Prince-Sharma002/Hacknovate6.0',
+    image: '/project/hacknovate.png',
   }
 ];
 
@@ -70,16 +71,22 @@ function TechChip({ label }: { label: string }) {
   );
 }
 
-const Projects = () => {
+type ProjectsProps = {
+  limit?: number; // show only first N projects on summaries
+  showMoreLink?: boolean; // show link to /projects
+};
+
+const Projects = ({ limit, showMoreLink = false }: ProjectsProps) => {
+  const displayed = limit ? projects.slice(0, limit) : projects;
   return (
     <section>
-      <hr className="my-6 border-zinc-800" />
+      <hr className="my-6 border-zinc-800 " />
       <h2 className="mb-4 text-2xl font-semibold text-zinc-200">~ Projects</h2>
 
       <motion.div
         className="grid grid-cols-1 gap-4 md:grid-cols-2"
       >
-        {projects.map((p) => (
+        {displayed.map((p) => (
           <motion.article
             key={p.title}
             className="rounded-xl border border-zinc-800/70 bg-zinc-900/30 p-3 ring-1 ring-white/5 transition-colors hover:bg-white/5"
@@ -132,6 +139,16 @@ const Projects = () => {
           </motion.article>
         ))}
       </motion.div>
+      {showMoreLink && (
+        <div className="mt-4 flex justify-end">
+          <Link
+            href="/projects"
+            className="inline-flex items-center rounded-md border border-zinc-700/60 bg-zinc-900/30 px-3 py-1.5 text-sm text-sky-400 hover:bg-white/5"
+          >
+            More projects →
+          </Link>
+        </div>
+      )}
     </section>
   )
 }

@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Skills from "@/components/Skills";
 import Work from "@/components/Work";
 import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       <Intro />
       <Skills />
       <Work />
-      <Projects />
+      <Projects limit={4} showMoreLink />
+      <Contact />
       </div>
     </div>
   );

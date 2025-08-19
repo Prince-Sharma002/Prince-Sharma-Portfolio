@@ -46,6 +46,7 @@ const categories: Category[] = [
     emoji: '🗄️',
     items: [
       'MongoDB',
+      'Docker',
       'Firebase',
       'PostgreSQL',
       'MySQL',
@@ -101,7 +102,7 @@ function BadgeChip({ label }: Badge) {
 const Skills = () => {
   return (
     <section>
-      <h2 className="mb-4 text-base font-semibold text-zinc-200">~ My Techstack</h2>
+      <h2 className="mb-4 text-2xl font-semibold text-zinc-200">~ My Techstack</h2>
 
       {/* Category sections */}
       <motion.div

@@ -28,12 +28,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/resume.pdf" target="_blank" className="transition-colors duration-200 hover:text-rose-600">
+              <Link href="https://www.canva.com/design/DAGs3HH9Il8/wHMdo2yydgG-B08jg466Cw/edit?utm_content=DAGs3HH9Il8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" className="transition-colors duration-200 hover:text-rose-600">
                 <span className="inline-block first-letter:text-rose-600 first-letter:font-extrabold font-bold">Resume</span>
               </Link>
             </li>
             <li>
-              <Link href="https://github.com/yourhandle" target="_blank" className="transition-colors duration-200 hover:text-rose-600">
+              <Link href="https://github.com/Prince-Sharma002" target="_blank" className="transition-colors duration-200 hover:text-rose-600">
                 <span className="inline-block first-letter:text-rose-600 first-letter:font-extrabold font-bold">Github</span>
               </Link>
             </li>

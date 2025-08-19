@@ -7,7 +7,7 @@ const Contact = () => {
       {/* Heading */}
       <div className="mb-8 border-t mt-4 border-white/20 pt-6">
         <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
-          ~ Let's Connect
+          ~ Let&apos;s Connect
         </h2>
       </div>
 

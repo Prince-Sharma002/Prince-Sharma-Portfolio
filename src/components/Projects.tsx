@@ -79,7 +79,7 @@ type ProjectsProps = {
 const Projects = ({ limit, showMoreLink = false }: ProjectsProps) => {
   const displayed = limit ? projects.slice(0, limit) : projects;
   return (
-    <section>
+    <section id='projects'>
       <hr className="my-6 border-zinc-800 " />
       <h2 className="mb-4 text-2xl font-semibold text-zinc-200">~ Projects</h2>
 

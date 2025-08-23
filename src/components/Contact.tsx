@@ -11,23 +11,23 @@ const Contact = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 items-start">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8 items-start">
 
         {/* Links side */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {/* About Me */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">About Me</h3>
+            <h3 className="mb-3 text-base sm:text-lg font-semibold text-white">About Me</h3>
             <ul className="space-y-3 text-zinc-300">
               <li>
                 <a
                   href="mailto:prince12845sharma@gmail.com"
-                  className="group inline-flex items-start gap-3 hover:text-rose-500"
+                  className="group w-full flex items-center gap-3 rounded-md border border-white/10 bg-zinc-900/40 p-3 hover:bg-zinc-900/60 transition-colors"
                 >
-                  <span className="mt-0.5">✉️</span>
+                  <span className="mt-0.5 text-lg sm:text-xl">✉️</span>
                   <span>
-                    <span className="block font-medium text-white group-hover:text-rose-500">Email</span>
-                    <span className="block text-sm">prince12845sharma@gmail.com</span>
+                    <span className="block font-medium text-white">Email</span>
+                    <span className="block text-[13px] sm:text-sm break-words">prince12845sharma@gmail.com</span>
                   </span>
                 </a>
               </li>
@@ -36,12 +36,12 @@ const Contact = () => {
                   href="https://www.canva.com/design/DAGs3HH9Il8/wHMdo2yydgG-B08jg466Cw/edit?utm_content=DAGs3HH9Il8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="group inline-flex items-start gap-3 hover:text-rose-500"
+                  className="group w-full flex items-center gap-3 rounded-md border border-white/10 bg-zinc-900/40 p-3 hover:bg-zinc-900/60 transition-colors"
                 >
-                  <span className="mt-0.5">📄</span>
+                  <span className="mt-0.5 text-lg sm:text-xl">📄</span>
                   <span>
-                    <span className="block font-medium text-white group-hover:text-rose-500">Resume</span>
-                    <span className="block text-sm">Download Resume</span>
+                    <span className="block font-medium text-white">Resume</span>
+                    <span className="block text-[13px] sm:text-sm break-words">Download Resume</span>
                   </span>
                 </a>
               </li>
@@ -50,19 +50,19 @@ const Contact = () => {
 
           {/* Code */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">Code</h3>
+            <h3 className="mb-3 text-base sm:text-lg font-semibold text-white">Code</h3>
             <ul className="space-y-3 text-zinc-300">
               <li>
                 <a
                   href="https://github.com/Prince-Sharma002"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="group inline-flex items-start gap-3 hover:text-rose-500"
+                  className="group w-full flex items-center gap-3 rounded-md border border-white/10 bg-zinc-900/40 p-3 hover:bg-zinc-900/60 transition-colors"
                 >
-                  <span className="mt-0.5">💻</span>
+                  <span className="mt-0.5 text-lg sm:text-xl">💻</span>
                   <span>
-                    <span className="block font-medium text-white group-hover:text-rose-500">Github</span>
-                    <span className="block text-sm">@Prince-Sharma002</span>
+                    <span className="block font-medium text-white">Github</span>
+                    <span className="block text-[13px] sm:text-sm break-words">@Prince-Sharma002</span>
                   </span>
                 </a>
               </li>
@@ -71,19 +71,19 @@ const Contact = () => {
 
           {/* Social Media */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">Social Media</h3>
+            <h3 className="mb-3 text-base sm:text-lg font-semibold text-white">Social Media</h3>
             <ul className="space-y-3 text-zinc-300">
               <li>
                 <a
                   href="https://www.linkedin.com/in/prince-sharma-047973253/"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="group inline-flex items-start gap-3 hover:text-rose-500"
+                  className="group w-full flex items-center gap-3 rounded-md border border-white/10 bg-zinc-900/40 p-3 hover:bg-zinc-900/60 transition-colors"
                 >
-                  <span className="mt-0.5">💼</span>
+                  <span className="mt-0.5 text-lg sm:text-xl">💼</span>
                   <span>
-                    <span className="block font-medium text-white group-hover:text-rose-500">LinkedIn</span>
-                    <span className="block text-sm">@prince-sharma</span>
+                    <span className="block font-medium text-white">LinkedIn</span>
+                    <span className="block text-[13px] sm:text-sm break-words">@prince-sharma</span>
                   </span>
                 </a>
               </li>
@@ -92,12 +92,12 @@ const Contact = () => {
                   href="https://x.com/prince007sharma"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="group inline-flex items-start gap-3 hover:text-rose-500"
+                  className="group w-full flex items-center gap-3 rounded-md border border-white/10 bg-zinc-900/40 p-3 hover:bg-zinc-900/60 transition-colors"
                 >
-                  <span className="mt-0.5">🐦</span>
+                  <span className="mt-0.5 text-lg sm:text-xl">🐦</span>
                   <span>
-                    <span className="block font-medium text-white group-hover:text-rose-500">Twitter/X</span>
-                    <span className="block text-sm">@prince007sharma</span>
+                    <span className="block font-medium text-white">Twitter/X</span>
+                    <span className="block text-[13px] sm:text-sm break-words">@prince007sharma</span>
                   </span>
                 </a>
               </li>
@@ -106,12 +106,12 @@ const Contact = () => {
                   href="https://www.instagram.com/princeparasarrr/"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="group inline-flex items-start gap-3 hover:text-rose-500"
+                  className="group w-full flex items-center gap-3 rounded-md border border-white/10 bg-zinc-900/40 p-3 hover:bg-zinc-900/60 transition-colors"
                 >
-                  <span className="mt-0.5">📸</span>
+                  <span className="mt-0.5 text-lg sm:text-xl">📸</span>
                   <span>
-                    <span className="block font-medium text-white group-hover:text-rose-500">Instagram</span>
-                    <span className="block text-sm">@princeparasarrr</span>
+                    <span className="block font-medium text-white">Instagram</span>
+                    <span className="block text-[13px] sm:text-sm break-words">@princeparasarrr</span>
                   </span>
                 </a>
               </li>

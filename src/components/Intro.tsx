@@ -143,7 +143,7 @@ export default function Intro() {
                 href="https://www.linkedin.com/posts/prince-sharma-047973253_sih2024-techfixer-isro-activity-7277622696543186944-aGt4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6c53cBRZ6cLuxGieb3FvPGLWbXCN6UTMs"
                 previewImage="/sih24.jpeg"
               />
-              {' | '}Core Member @GDGC '24, @SHEBUILDS | Hackathons Won(x4), Organized(x2)
+              {' | '}Core Member @GDGC &#39;24, @SHEBUILDS | Hackathons Won(x4), Organized(x2)
             </p>
             <p>
               Freelanced with 5+ clients, and built tools like{' '}

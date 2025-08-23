@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function Pill({ children, className = '' }: React.PropsWithChildren<{ className?: string }>) {
   return (
@@ -10,6 +11,93 @@ function Pill({ children, className = '' }: React.PropsWithChildren<{ className?
       className={`inline-flex items-center gap-2 rounded-full border border-zinc-700/60 bg-zinc-900/60 px-3 py-1 text-xs text-zinc-300 ${className}`}
     >
       {children}
+    </span>
+  );
+}
+
+// Hoverable link with preview (similar to Work.tsx CompanyHover)
+function HoverPreviewLink({
+  label,
+  href,
+  previewImage,
+}: {
+  label: string;
+  href: string;
+  previewImage?: string;
+}) {
+  const [open, setOpen] = React.useState(false);
+  const openTimer = React.useRef<number | null>(null);
+  const closeTimer = React.useRef<number | null>(null);
+
+  const scheduleOpen = () => {
+    if (closeTimer.current) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    if (!open) {
+      openTimer.current = window.setTimeout(() => setOpen(true), 120);
+    }
+  };
+  const scheduleClose = () => {
+    if (openTimer.current) {
+      window.clearTimeout(openTimer.current);
+      openTimer.current = null;
+    }
+    closeTimer.current = window.setTimeout(() => setOpen(false), 160);
+  };
+
+  React.useEffect(() => () => {
+    if (openTimer.current) window.clearTimeout(openTimer.current);
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+  }, []);
+
+  return (
+    <span className="relative inline-block" onMouseEnter={scheduleOpen} onMouseLeave={scheduleClose}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline underline-offset-4 decoration-zinc-400 transition-colors hover:decoration-zinc-300"
+        onClick={() => setTimeout(() => setOpen(false), 250)}
+      >
+        {label}
+      </a>
+      {open && <div className="absolute left-0 top-full h-2 w-80" />}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="preview"
+            initial={{ opacity: 0, y: 8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.16, ease: 'easeOut' } }}
+            exit={{ opacity: 0, y: 8, scale: 0.98, transition: { duration: 0.1, ease: 'easeIn' } }}
+            className="absolute left-0 top-full z-20 mt-1 w-80 overflow-hidden rounded-md border border-zinc-700/60 bg-zinc-900/95 shadow-lg ring-1 ring-white/5"
+          >
+            <div className="relative h-40 w-full bg-zinc-800/60">
+              {previewImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={previewImage} alt="LinkedIn preview" className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-xs text-zinc-400">No preview image</div>
+              )}
+            </div>
+            <div className="p-3">
+              <p className="text-xs text-zinc-300">LinkedIn highlight</p>
+              <p className="mt-1 line-clamp-1 text-[11px] text-zinc-500">
+                {(() => {
+                  try {
+                    return new URL(href).hostname;
+                  } catch {
+                    return 'linkedin.com';
+                  }
+                })()}
+              </p>
+              <div className="mt-2 flex items-center justify-end">
+                <span className="text-[11px] text-zinc-400">Open to view</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </span>
   );
 }
@@ -43,7 +131,20 @@ export default function Intro() {
           {/* Bio */}
           <div className="mt-6 space-y-3 text-md leading-6 text-zinc-300">
             <p>
-            Intern @DRDO 🎓 | SIH &#39;23 WINNER 🏆, SIH &#39;24 ( ISRO ) Finalist🏅| Core Member @GDGC &#39;24, @SHEBUILDS | Hackathons Won(x4), Organized(x2) </p>
+              Intern @DRDO 🎓 |{' '}
+              <HoverPreviewLink
+                label={"SIH '23 WINNER 🏆"}
+                href="https://www.linkedin.com/posts/prince-sharma-047973253_smartindiahackathon-digitalabrdruids-sih2023-activity-7144621869306945536-VaMe?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6c53cBRZ6cLuxGieb3FvPGLWbXCN6UTMs"
+                previewImage="/sih23.jpeg"
+              />
+              {', '}
+              <HoverPreviewLink
+                label={"SIH '24 ( ISRO ) Finalist🏅"}
+                href="https://www.linkedin.com/posts/prince-sharma-047973253_sih2024-techfixer-isro-activity-7277622696543186944-aGt4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6c53cBRZ6cLuxGieb3FvPGLWbXCN6UTMs"
+                previewImage="/sih24.jpeg"
+              />
+              {' | '}Core Member @GDGC '24, @SHEBUILDS | Hackathons Won(x4), Organized(x2)
+            </p>
             <p>
               Freelanced with 5+ clients, and built tools like{' '}
               <Link

@@ -22,18 +22,28 @@ const cardVariants: Variants = {
 
 const projects: Project[] = [
   {
+    title: 'Sofia 🤖',
+    date: 'May 2024',
+    description:
+      'A Google PaLM API-based Conversational Chatbot with voice input/output and image processing.',
+    tech: ['ReactJS', 'Boostrap', 'Google PaLM API', 'LocalStorage', 'SpeechRecognition' ],
+    demo: 'https://palm-api-react-project.vercel.app/',
+    github: 'https://tinyurl.com/35panaf8',
+    image: '/project/sofia.png',
+  },
+  {
     title: 'Segmap 🌍',
     date: 'March 2025',
     description:
       'An interactive map for disaster response and environmental monitoring. SegMap is a smart mapping platform designed to enhance disaster management and environmental monitoring with realtime Message support.',
-    tech: ['NextJS', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', "ReactFlow", "Leaflet", "Cryptojs"],
+    tech: ['NextJS', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', "ReactFlow", "Leaflet", "Cryptojs", "Firebase Authentication"],
     demo: 'https://geo-mesh-front.vercel.app/',
     github: 'https://github.com/Prince-Sharma002/GeoMesh-Front',
     image: '/project/segmap.png',
   },
   {
     title: 'Complain Portal 📬',
-    date: 'May 2025',
+    date: 'April 2024',
     description:
       'Streamline your complaint box with a dashboard and dynamic map. Notify users of complaint progress via email for transparency and efficiency.',
     tech: ['ReactJS', 'MapBox', 'NodeJS', 'MongoDB', 'ExpressJS', 'Tailwind CSS'],
@@ -42,14 +52,14 @@ const projects: Project[] = [
     image: '/project/complainbox.png',
   },
   {
-    title: 'Sofia 🤖',
-    date: 'May 2025',
+    title: 'GDGC’24 website',
+    date: 'September 2024',
     description:
-      'A Google PaLM API-based Conversational Chatbot with voice input/output and image processing.',
-    tech: ['ReactJS', 'Boostrap', 'Google PaLM API', 'LocalStorage', 'SpeechRecognition' ],
-    demo: 'https://palmapi-67c47.web.app/',
-    github: 'https://tinyurl.com/35panaf8',
-    image: '/project/sofia.png',
+      'the official ABESIT GDGC’24 website and organized web development events to foster innovation and learning.',
+    tech: ['ReactJS', 'Tailwind CSS', 'Framer Motion', 'Acentricity UI'],
+    demo: 'https://main.d34x8j0y50canp.amplifyapp.com/',
+    github: 'https://github.com/GDGC-abesit/gdgc-website',
+    image: '/project/gdgc.png',
   },
   {
     title: 'Hacknovate 6.0 official Website 📬',
@@ -60,7 +70,28 @@ const projects: Project[] = [
     demo: 'https://hacknovate6-0.vercel.app/',
     github: 'https://github.com/Prince-Sharma002/Hacknovate6.0',
     image: '/project/hacknovate.png',
-  }
+  },
+  {
+    title: 'SheBuilds Hackemon official website',
+    date: 'May 2025',
+    description:
+      'Developed the official website for SheBuilds Hackemon website .The platform served as a hub for event details, registrations, and updates',
+    tech: ['ReactJS', 'Tailwind CSS', 'Framer Motion', 'Acentricity UI'],
+    demo: 'https://www.hackemon.dev/',
+    github: 'https://github.com/prince12841sharma/hackemon-website',
+    image: '/project/hackemon.png',
+  },
+  {
+    title: 'Weather Assistant 🌤️',
+    date: 'September 2023',
+    description:
+      'A voice-operated OpenWeatherMap API-based Weather Application for real-time weather information.',
+    tech: ['ReactJS', 'Tailwind CSS', 'SCSS', 'Firebase Authentication', 'OpenWeatherMap API', 'SpeechRecognition'],
+    demo: 'https://my-project-8cd2e.web.app/',
+    github: 'https://medium.com/@prince12845sharma/building-a-dynamic-weather-application-with-voice-and-text-search-in-react-729fc5d6717e',
+    image: '/project/weather.png',
+  },
+  
 ];
 
 function TechChip({ label }: { label: string }) {

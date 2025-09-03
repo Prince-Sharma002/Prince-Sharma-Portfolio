@@ -26,7 +26,7 @@ const projects: Project[] = [
     date: 'May 2024',
     description:
       'A Google PaLM API-based Conversational Chatbot with voice input/output and image processing.',
-    tech: ['ReactJS', 'Boostrap', 'Google PaLM API', 'LocalStorage', 'SpeechRecognition' ],
+    tech: ['ReactJS', 'Tailwind CSS', 'Redux', 'Google PaLM API', 'LocalStorage', 'SpeechRecognition' ],
     demo: 'https://palm-api-react-project.vercel.app/',
     github: 'https://tinyurl.com/35panaf8',
     image: '/project/sofia.png',

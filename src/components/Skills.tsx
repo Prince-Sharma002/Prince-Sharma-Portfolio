@@ -22,6 +22,7 @@ const categories: Category[] = [
       'MERN Stack',
       'Next.js',
       'Flask',
+      'Redux',
       'Tailwind CSS',
       'Bootstrap',
       'SCSS',

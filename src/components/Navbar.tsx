@@ -18,13 +18,18 @@ const Navbar = () => {
           {/* Desktop links */}
           <ul className="hidden md:flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <li>
-              <Link href="#contact" className="transition-colors duration-200 hover:text-rose-600">
+              <Link href="/#contact" className="transition-colors duration-200 hover:text-rose-600">
                 <span className="inline-block first-letter:text-rose-600 first-letter:font-extrabold font-bold">Connect</span>
               </Link>
             </li>
             <li>
-              <Link href="#projects" className="transition-colors duration-200 hover:text-rose-600">
+              <Link href="/#projects" className="transition-colors duration-200 hover:text-rose-600">
                 <span className="inline-block first-letter:text-rose-600 first-letter:font-extrabold font-bold">Projects</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/certificates" className="transition-colors duration-200 hover:text-rose-600">
+                <span className="inline-block first-letter:text-rose-600 first-letter:font-extrabold font-bold">Certificates</span>
               </Link>
             </li>
             <li>
@@ -69,13 +74,18 @@ const Navbar = () => {
         >
           <ul className="mt-2 space-y-1 rounded-lg border border-white/10 bg-black/30 p-2 backdrop-blur">
             <li>
-              <Link onClick={() => setOpen(false)} href="#contact" className="block rounded-md px-3 py-2 hover:bg-white/10">
+              <Link onClick={() => setOpen(false)} href="/#contact" className="block rounded-md px-3 py-2 hover:bg-white/10">
                 Connect
               </Link>
             </li>
             <li>
-              <Link onClick={() => setOpen(false)} href="#projects" className="block rounded-md px-3 py-2 hover:bg-white/10">
+              <Link onClick={() => setOpen(false)} href="/#projects" className="block rounded-md px-3 py-2 hover:bg-white/10">
                 Projects
+              </Link>
+            </li>
+            <li>
+              <Link onClick={() => setOpen(false)} href="/certificates" className="block rounded-md px-3 py-2 hover:bg-white/10">
+                Certificates
               </Link>
             </li>
             <li>

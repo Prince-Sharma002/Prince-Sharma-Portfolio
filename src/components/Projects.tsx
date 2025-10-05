@@ -127,13 +127,13 @@ const Projects = ({ limit, showMoreLink = false }: ProjectsProps) => {
             viewport={{ once: true, amount: 0.3 }}
           >
             {/* Preview box */}
-            <div className="mb-3 overflow-hidden rounded-lg border border-zinc-800/70 aspect-video relative bg-zinc-900">
+            <div className="mb-3 overflow-hidden rounded-lg border border-zinc-800/70 aspect-video relative bg-zinc-900 group/image">
               <Image
                 src={p.image}
                 alt={`${p.title} preview`}
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover object-top"
+                className="object-cover object-top transition-transform duration-300 ease-out group-hover/image:scale-110"
                 priority={false}
               />
             </div>

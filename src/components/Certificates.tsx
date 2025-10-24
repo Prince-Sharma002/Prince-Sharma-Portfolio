@@ -31,7 +31,7 @@ const certificates: Certificate[] = [
         <strong>Project:</strong> Flow-tech Repairs <br />
         <strong>Problem Statement:</strong> 1288 (Ministry of Jal Shakti) <br /><br />
         <strong>Problem Tackled:</strong> Non-Revenue Water (NRW) transformation into Revenue Water. <br />
-        <strong>Solution:</strong> Created "Flow-tech Repairs," an app for managing pipeline leakage complaints. <br />
+        <strong>Solution:</strong> Created &quot;Flow-tech Repairs,&quot; an app for managing pipeline leakage complaints. <br />
         <strong>ML Model:</strong> Utilized the Hazen-Williams equation for validating NRW data and calculating water loss. <br />
         <strong>Mapping Integration:</strong> Interactive maps display leakage-prone areas and complaint zones.
       </>
@@ -78,19 +78,19 @@ const certificates: Certificate[] = [
   },
   { 
     id: 4, 
-    title: "ISRO SIH'24 - Top 47 Team", 
+    title: "ISRO SIH&apos;24 - Top 47 Team", 
     date: "2024-12-14", 
     image: "/certificates/isro.jpeg",
     linkdinLink: "https://www.linkedin.com/posts/prince-sharma-047973253_sih2024-techfixer-isro-activity-7277622696543186944-aGt4?utm_source=share&utm_medium=member_desktop",
     description: (
       <>
-        As part of Team TECH FIXER, we had the honor of addressing ISRO's challenging.
+        As part of Team TECH FIXER, we had the honor of addressing ISRO&apos;s challenging.
         <br/> <br/>
         <strong> Problem </strong> : On-device semantic segmentation of WMS services with geospatial data export.
         <br/>
         <strong> Problem Statement: </strong>  1735 (ISRO)
         <br/> <br/>
-        Out of thousands of participants, we ranked among the top 47 teams in India for ISRO's problem statements. This grand finale journey was a transformative experience, filled with intense competition and invaluable lessons.
+        Out of thousands of participants, we ranked among the top 47 teams in India for ISRO&apos;s problem statements. This grand finale journey was a transformative experience, filled with intense competition and invaluable lessons.
         <br/> <br/>
       </>
     )
@@ -103,7 +103,7 @@ const certificates: Certificate[] = [
     linkdinLink: "https://www.linkedin.com/posts/prince-sharma-047973253_codeathon-teamwork-disastermanagement-activity-7278487141259661316-8a7t?utm_source=share&utm_medium=member_desktop",
     description: (
       <>
-        Proud to have secured the Consolation Prize in the CSE Department's Code-A-Thon 3.0 during Year 3 at ABESIT!
+        Proud to have secured the Consolation Prize in the CSE Department&apos;s Code-A-Thon 3.0 during Year 3 at ABESIT!
         <br/> <br/>
         Among the many remarkable projects, our submission, SegMap: An Interactive Map for Disaster Management and Environmentalists, stood out and was recognized for its innovation and impact.
         <br/> <br/>
@@ -116,7 +116,7 @@ const certificates: Certificate[] = [
     title: "Hacknovate 6.0 Tech Lead", 
     date: "2025-03-05", 
     image: "/certificates/hacknovate6.jpg",
-    linkdinLink: "https://www.linkedin.com/posts/prince-sharma-047973253_hacknovate6-techteam-hackathonjourney-activity-7316085944757932032-x_12?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6c53cBRZ6cLuxGieb3FvPGLWbXCN6UTMs",
+    linkdinLink: "https://www.linkedin.com/posts/prince-sharma-047973253_hacknovate6-techteam-hackathonjourney-activity-7316085944757932032-x_12?utm_source=share&utm_medium=member_desktop&amp;rcm=ACoAAD6c53cBRZ6cLuxGieb3FvPGLWbXCN6UTMs",
     description: (
       <>
        Led technical setup, event execution, and partnerships. Actively contribute in Hacknovate 6.0 official website for a seamless user experience.

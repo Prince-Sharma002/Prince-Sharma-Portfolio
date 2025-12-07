@@ -2,6 +2,46 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion, type Variants } from 'framer-motion'
+import { ParallaxSection, StaggeredReveal, MouseFollow } from './ParallaxSection'
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, x: -50 },
+  show: { 
+    opacity: 1, 
+    x: 0,
+    transition: { 
+      duration: 0.5, 
+      ease: 'easeOut'
+    } 
+  },
+  hover: {
+    y: -8,
+    scale: 1.02,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 600,
+      damping: 30
+    }
+  }
+};
+
+function TechChip({ label }: { label: string }) {
+  return (
+    <motion.span 
+      className="inline-flex items-center rounded-md border border-zinc-700/60 bg-zinc-900/30 px-2.5 py-1 text-xs text-zinc-300 transition-all duration-300 hover:border-zinc-600/60 hover:bg-white/5 hover:text-zinc-200"
+      whileHover={{ 
+        scale: 1.05, 
+        y: -1,
+        backgroundColor: "rgba(255, 255, 255, 0.05)"
+      }}
+      whileTap={{ scale: 0.98 }}
+    >
+      {label}
+    </motion.span>
+  );
+}
 
 type Certificate = {
   id: number;
@@ -12,10 +52,6 @@ type Certificate = {
   description: React.ReactNode;
 };
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },
-};
 
 const certificates: Certificate[] = [
   { 
@@ -190,71 +226,150 @@ const Certificates = ({ limit, showMoreLink = false }: CertificatesProps) => {
   const displayed = limit ? certificates.slice(0, limit) : certificates;
 
   return (
-    <section>
-      <motion.div
-        className="grid grid-cols-1 gap-4 md:grid-cols-2"
+    <section id='certificates' className="relative">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeInOut"
+          }}
+          className="absolute top-20 right-20 w-36 h-36 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-full blur-2xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -30, 0],
+            y: [0, 40, 0],
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeInOut",
+            delay: 3
+          }}
+          className="absolute bottom-20 left-20 w-28 h-28 bg-gradient-to-tr from-cyan-500/5 to-blue-500/5 rounded-full blur-2xl"
+        />
+      </div>
+
+      <motion.hr 
+        className="my-6 border-zinc-800"
+        initial={{ opacity: 0, scaleX: 0 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        style={{ transformOrigin: "left" }}
+      />
+      
+      <motion.h2 
+        className="mb-6 text-2xl font-semibold text-zinc-200"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
       >
-        {displayed.map((cert) => (
-          <motion.article
-            key={cert.id}
-            className="rounded-xl border border-zinc-800/70 bg-zinc-900/30 p-3 ring-1 ring-white/5 transition-colors hover:bg-white/5"
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {/* Certificate Image */}
-            <div className="mb-3 overflow-hidden rounded-lg border border-zinc-800/70 aspect-video relative bg-zinc-900 group/image">
-              <Image
-                src={cert.image}
-                alt={`${cert.title} certificate`}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover object-center transition-transform duration-300 ease-out group-hover/image:scale-110"
-                priority={false}
-              />
-            </div>
+        ~ Certificates
+      </motion.h2>
 
-            {/* Header: title and date */}
-            <div className="mb-1 flex items-start justify-between gap-3">
-              <h3 className="text-lg font-semibold text-zinc-100">{cert.title}</h3>
-              <span className="shrink-0 text-xs text-zinc-400">{cert.date}</span>
-            </div>
+      <motion.div
+        className="grid grid-cols-1 gap-6 md:grid-cols-2"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+          {displayed.map((cert, index) => (
+            <MouseFollow key={cert.id} intensity={0.02} className="relative">
+              <motion.article
+                className="rounded-xl border border-zinc-800/70 bg-zinc-900/30 p-4 ring-1 ring-white/5 transition-all duration-300 hover:bg-white/5 hover:shadow-xl hover:shadow-zinc-900/20 hover:border-zinc-700/80"
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="show"
+                whileHover="hover"
+                viewport={{ once: true, amount: 0.0 }}
+                custom={index}
+              >
+                {/* Certificate Image with enhanced hover */}
+                <div className="mb-4 overflow-hidden rounded-lg border border-zinc-800/70 aspect-video relative bg-zinc-900 group/image">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 z-10"
+                />
+                  <Image
+                    src={cert.image}
+                    alt={`${cert.title} certificate`}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover object-center transition-all duration-500 ease-out group-hover/image:scale-110 group-hover/image:rotate-1"
+                    priority={false}
+                  />
+                <motion.div
+                  className="absolute inset-0 border border-zinc-700/50 rounded-lg opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"
+                />
+                </div>
 
-            {/* Description */}
-            <div 
-              className={`mb-3 text-sm leading-6 text-zinc-300 overflow-hidden transition-all duration-300 ${
-                expandedId === cert.id ? 'max-h-[1000px]' : 'max-h-24'
-              }`}
-            >
-              <div className="prose prose-sm prose-invert max-w-none">
-                {cert.description}
-              </div>
-            </div>
+                {/* Header: title and date */}
+                <div className="mb-2 flex items-start justify-between gap-3">
+                  <motion.h3 
+                    className="text-lg font-semibold text-zinc-100"
+                    whileHover={{ color: "#f3f4f6" }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {cert.title}
+                  </motion.h3>
+                  <motion.span 
+                    className="shrink-0 text-xs text-zinc-400 px-2 py-1 bg-zinc-800/50 rounded-full"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(38, 38, 38, 0.8)" }}
+                  >
+                    {cert.date}
+                  </motion.span>
+                </div>
 
-            {/* Read More/Less Button */}
-            <button
-              onClick={() => setExpandedId(expandedId === cert.id ? null : cert.id)}
-              className="mb-2 text-sm text-sky-400 hover:underline focus:outline-none"
-            >
-              {expandedId === cert.id ? 'Show less' : 'Read more'}
-            </button>
-
-            {/* LinkedIn Link */}
-            {cert.linkdinLink && (
-              <div className="flex items-center gap-4 text-sm">
-                <a 
-                  href={cert.linkdinLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-sky-400 hover:underline"
+                {/* Description */}
+                <motion.p 
+                  className="mb-3 text-sm leading-6 text-zinc-300"
+                  whileHover={{ color: "#e5e7eb" }}
+                  transition={{ duration: 0.2 }}
                 >
-                  View on LinkedIn
-                </a>
-              </div>
-            )}
-          </motion.article>
-        ))}
+                  <div className={`prose prose-sm prose-invert max-w-none overflow-hidden transition-all duration-500 ${
+                    expandedId === cert.id ? 'max-h-[1000px]' : 'max-h-24'
+                  }`}>
+                    {cert.description}
+                  </div>
+                </motion.p>
+
+                {/* Read More/Less Button */}
+                <motion.button
+                  onClick={() => setExpandedId(expandedId === cert.id ? null : cert.id)}
+                  className="mb-2 text-sm text-sky-400 hover:text-sky-300 focus:outline-none transition-colors duration-200"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {expandedId === cert.id ? 'Show less' : 'Read more'}
+                </motion.button>
+
+                {/* LinkedIn Link */}
+                {cert.linkdinLink && (
+                  <motion.div 
+                    className="flex items-center gap-4 text-sm"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <motion.a 
+                      href={cert.linkdinLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sky-400 hover:text-sky-300 hover:underline transition-all duration-200"
+                      whileHover={{ x: 5 }}
+                    >
+                      View on LinkedIn
+                    </motion.a>
+                  </motion.div>
+                )}
+              </motion.article>
+            </MouseFollow>
+          ))}
       </motion.div>
     </section>
   )

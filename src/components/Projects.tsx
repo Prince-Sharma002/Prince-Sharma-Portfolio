@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, type Variants } from 'framer-motion'
+import { ParallaxSection, FloatingElement, MouseFollow } from './ParallaxSection'
 
 
 type Project = {
@@ -16,8 +17,26 @@ type Project = {
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },
+  hidden: { opacity: 0, x: -50 },
+  show: { 
+    opacity: 1, 
+    x: 0,
+    transition: { 
+      duration: 0.5, 
+      ease: 'easeOut'
+    } 
+  },
+  hover: {
+    y: -8,
+    scale: 1.02,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 600,
+      damping: 30
+    }
+  }
 };
 
 const projects: Project[] = [
@@ -96,9 +115,17 @@ const projects: Project[] = [
 
 function TechChip({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center rounded-md border border-zinc-700/60 bg-zinc-900/30 px-2.5 py-1 text-xs text-zinc-300">
+    <motion.span 
+      className="inline-flex items-center rounded-md border border-zinc-700/60 bg-zinc-900/30 px-2.5 py-1 text-xs text-zinc-300 transition-all duration-300 hover:border-zinc-600/60 hover:bg-white/5 hover:text-zinc-200"
+      whileHover={{ 
+        scale: 1.05, 
+        y: -1,
+        backgroundColor: "rgba(255, 255, 255, 0.05)"
+      }}
+      whileTap={{ scale: 0.98 }}
+    >
       {label}
-    </span>
+    </motion.span>
   );
 }
 
@@ -110,71 +137,140 @@ type ProjectsProps = {
 const Projects = ({ limit, showMoreLink = false }: ProjectsProps) => {
   const displayed = limit ? projects.slice(0, limit) : projects;
   return (
-    <section id='projects'>
-      <hr className="my-6 border-zinc-800 " />
-      <h2 className="mb-4 text-2xl font-semibold text-zinc-200">~ Projects</h2>
+    <section id='projects' className="relative">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeInOut"
+          }}
+          className="absolute top-20 right-20 w-36 h-36 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-full blur-2xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -30, 0],
+            y: [0, 40, 0],
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeInOut",
+            delay: 3
+          }}
+          className="absolute bottom-20 left-20 w-28 h-28 bg-gradient-to-tr from-cyan-500/5 to-blue-500/5 rounded-full blur-2xl"
+        />
+      </div>
+
+      <motion.hr 
+        className="my-6 border-zinc-800"
+        initial={{ opacity: 0, scaleX: 0 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        style={{ transformOrigin: "left" }}
+      />
+      
+      <motion.h2 
+        className="mb-6 text-2xl font-semibold text-zinc-200"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        ~ Projects
+      </motion.h2>
 
       <motion.div
-        className="grid grid-cols-1 gap-4 md:grid-cols-2"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
       >
-        {displayed.map((p) => (
-          <motion.article
-            key={p.title}
-            className="rounded-xl border border-zinc-800/70 bg-zinc-900/30 p-3 ring-1 ring-white/5 transition-colors hover:bg-white/5"
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {/* Preview box */}
-            <div className="mb-3 overflow-hidden rounded-lg border border-zinc-800/70 aspect-video relative bg-zinc-900 group/image">
-              <Image
-                src={p.image}
-                alt={`${p.title} preview`}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover object-top transition-transform duration-300 ease-out group-hover/image:scale-110"
-                priority={false}
-              />
-            </div>
+        {displayed.map((p, index) => (
+          <MouseFollow key={p.title} intensity={0.02} className="relative">
+            <motion.article
+              className="rounded-xl border border-zinc-800/70 bg-zinc-900/30 p-4 ring-1 ring-white/5 transition-all duration-300 hover:bg-white/5 hover:shadow-xl hover:shadow-zinc-900/20 hover:border-zinc-700/80"
+              variants={cardVariants}
+              whileHover="hover"
+            >
+              {/* Enhanced Preview box */}
+              <div className="mb-4 overflow-hidden rounded-lg border border-zinc-800/70 aspect-video relative bg-zinc-900 group/image">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 z-10"
+                />
+                <Image
+                  src={p.image}
+                  alt={`${p.title} preview`}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover object-top transition-all duration-500 ease-out group-hover/image:scale-110 group-hover/image:rotate-1"
+                  priority={false}
+                />
+                <motion.div
+                  className="absolute inset-0 border border-zinc-700/50 rounded-lg opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"
+                />
+              </div>
 
-            {/* Header: title and date */}
-            <div className="mb-1 flex items-start justify-between gap-3">
-              <h3 className="text-lg font-semibold text-zinc-100">{p.title}</h3>
-              <span className="shrink-0 text-xs text-zinc-400">{p.date}</span>
-            </div>
+              {/* Header: title and date */}
+              <div className="mb-2 flex items-start justify-between gap-3">
+                <motion.h3 
+                  className="text-lg font-semibold text-zinc-100"
+                  whileHover={{ color: "#f3f4f6" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {p.title}
+                </motion.h3>
+                <motion.span 
+                  className="shrink-0 text-xs text-zinc-400 px-2 py-1 bg-zinc-800/50 rounded-full"
+                  whileHover={{ scale: 1.05, backgroundColor: "rgba(38, 38, 38, 0.8)" }}
+                >
+                  {p.date}
+                </motion.span>
+              </div>
 
-            {/* Description */}
-            <p className="mb-3 text-sm leading-6 text-zinc-300">{p.description}</p>
+              {/* Description */}
+              <motion.p 
+                className="mb-3 text-sm leading-6 text-zinc-300"
+                whileHover={{ color: "#e5e7eb" }}
+                transition={{ duration: 0.2 }}
+              >
+                {p.description}
+              </motion.p>
 
-            {/* Links */}
-            <div className="mb-2 flex items-center gap-4 text-sm">
-              {p.demo && (
-                <a href={p.demo} target="_blank" className="text-sky-400 hover:underline">
-                  Live Demo
-                </a>
-              )}
-              {p.github && (
-                <a href={p.github} target="_blank" className="text-sky-400 hover:underline">
-                  GitHub
-                </a>
-              )}
-            </div>
+              {/* Enhanced Links */}
+              <div className="mb-3 flex items-center gap-4 text-sm">
+                {p.demo && (
+                  <a href={p.demo} target="_blank" className="text-sky-400 hover:text-sky-300 transition-colors duration-200">
+                    Live Demo
+                  </a>
+                )}
+                {p.github && (
+                  <a href={p.github} target="_blank" className="text-sky-400 hover:text-sky-300 transition-colors duration-200">
+                    GitHub
+                  </a>
+                )}
+              </div>
 
-            {/* Tech chips */}
-            <div className="flex flex-wrap items-center gap-2">
-              {p.tech.map((t) => (
-                <TechChip key={t} label={t} />
-              ))}
-            </div>
-          </motion.article>
+              {/* Tech chips */}
+              <div className="flex flex-wrap items-center gap-2">
+                {p.tech.map((t) => (
+                  <TechChip key={t} label={t} />
+                ))}
+              </div>
+            </motion.article>
+          </MouseFollow>
         ))}
       </motion.div>
+      
       {showMoreLink && (
-        <div className="mt-4 flex justify-end">
+        <div className="mt-6 flex justify-end">
           <Link
             href="/projects"
-            className="inline-flex items-center rounded-md border border-zinc-700/60 bg-zinc-900/30 px-3 py-1.5 text-sm text-sky-400 hover:bg-white/5"
+            className="inline-flex items-center rounded-md border border-zinc-700/60 bg-zinc-900/30 px-4 py-2 text-sm text-sky-400 hover:bg-white/5 hover:border-zinc-600/60 transition-all duration-300"
           >
             More projects →
           </Link>

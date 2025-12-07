@@ -12,7 +12,7 @@ export default function CertificatesPage() {
     <div className="">
       <Navbar />
       <div className="px-4">
-        <div className="mb-6">
+        <div className="mb-20">
           <h1 className="text-3xl font-bold text-zinc-100 mb-2">Certificates & Achievements</h1>
           <p className="text-zinc-400">A collection of my certifications, awards, and recognitions</p>
         </div>

@@ -141,7 +141,7 @@ export default function Intro() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    Hi, I'm <span className="text-zinc-100">Prince Sharma</span>
+                    Hi, I&apos;m <span className="text-zinc-100">Prince Sharma</span>
                   </motion.h1>
                   <motion.p 
                     className="mt-1 text-sm text-zinc-400"

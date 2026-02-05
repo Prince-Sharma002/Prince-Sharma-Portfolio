@@ -76,7 +76,7 @@ const projects: Project[] = [
     description:
       'the official ABESIT GDGC’24 website and organized web development events to foster innovation and learning.',
     tech: ['ReactJS', 'Tailwind CSS', 'Framer Motion', 'Acentricity UI'],
-    demo: 'https://main.d34x8j0y50canp.amplifyapp.com/',
+    demo: 'https://gdgc-abesit.com/',
     github: 'https://github.com/GDGC-abesit/gdgc-website',
     image: '/project/gdgc.png',
   },

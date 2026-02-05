@@ -6,7 +6,7 @@ export default function ProjectsPage() {
     <div className="">
       <Navbar />
       <div className="px-4">
-        <Projects />
+       <Projects />
       </div>
     </div>
   );

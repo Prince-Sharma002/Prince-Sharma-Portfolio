@@ -96,7 +96,7 @@ const projects: Project[] = [
     description:
       'Developed the official website for SheBuilds Hackemon website .The platform served as a hub for event details, registrations, and updates',
     tech: ['ReactJS', 'Tailwind CSS', 'Framer Motion', 'Acentricity UI'],
-    demo: 'https://www.hackemon.dev/',
+    demo: 'https://hackemon-website.vercel.app/',
     github: 'https://github.com/prince12841sharma/hackemon-website',
     image: '/project/hackemon.png',
   },

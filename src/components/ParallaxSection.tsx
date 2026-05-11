@@ -28,12 +28,11 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   })
   
   const y = useTransform(smoothProgress, [0, 1], [0, speed * 300])
-  const opacity = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
   
   return (
     <div ref={ref} className={`relative ${className}`}>
       <motion.div
-        style={{ y, opacity }}
+        style={{ y }}
         className="w-full h-full"
       >
         {children}

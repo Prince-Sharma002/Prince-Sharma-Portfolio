@@ -156,8 +156,16 @@ const itemVariants: Variants = {
 
 const Work = () => {
   return (
-    <section>
-      <h2 className="mb-4 text-2xl font-semibold text-zinc-200">~ Work Experience</h2>
+    <section className="relative">
+      <motion.h2 
+        className="mb-4 text-2xl font-semibold text-zinc-200"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        ~ Work Experience
+      </motion.h2>
       {/* Motion variants */}
       <motion.ul
         className="divide-y divide-zinc-800/80"

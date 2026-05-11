@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react'
+import { motion } from 'framer-motion'
 
 type Badge = {
   label: string;
@@ -73,17 +74,44 @@ function BadgeChip({ label }: Badge) {
   );
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+}
+
 const Skills = () => {
   return (
     <div className="relative py-12">
-      <section className="relative">
-        <h2 className="mb-6 text-2xl font-semibold text-zinc-200">
+      <motion.section 
+        className="relative"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.h2 
+          className="mb-6 text-2xl font-semibold text-zinc-200"
+          variants={itemVariants}
+        >
           ~ My Techstack
-        </h2>
+        </motion.h2>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 items-stretch">
+        <motion.div 
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 items-stretch"
+          variants={containerVariants}
+        >
           {categories.map((cat) => (
-            <div key={cat.title} className="relative">
+            <motion.div key={cat.title} className="relative" variants={itemVariants}>
               <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/30 p-5 ring-1 ring-white/5 transition-all duration-300 hover:bg-white/5 hover:shadow-xl hover:shadow-zinc-900/20 hover:border-zinc-700/80 h-full flex flex-col">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="text-2xl">
@@ -102,12 +130,19 @@ const Skills = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <hr className="my-6 border-zinc-800" />
-      </section>
+        <motion.hr 
+          className="my-6 border-zinc-800" 
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          style={{ transformOrigin: "left" }}
+        />
+      </motion.section>
     </div>
   )
 }

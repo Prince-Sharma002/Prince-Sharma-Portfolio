@@ -26,3 +26,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Hide default cursor globally */
+* {
+  cursor: none !important;
+}
+
+/* Ensure default cursor returns if JavaScript fails or for accessibility if needed */
+.no-js * {
+  cursor: auto !important;
+}

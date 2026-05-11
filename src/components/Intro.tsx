@@ -104,6 +104,16 @@ function HoverPreviewLink({
 }
 
 export default function Intro() {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return (
+    <section className="relative w-full text-zinc-200 min-h-[60vh] opacity-0" />
+  );
+
   return (
     <section className="relative w-full text-zinc-200 overflow-hidden">
       {/* Animated background gradient blobs */}
@@ -122,7 +132,21 @@ export default function Intro() {
       </ParallaxSection>
 
       {/* Hero grid with parallax */}
-      <div className="relative grid grid-cols-1 items-start gap-10 md:grid-cols-2">
+      <motion.div 
+        className="relative grid grid-cols-1 items-start gap-10 md:grid-cols-2"
+        initial="hidden"
+        animate="show"
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.15,
+              delayChildren: 0.2
+            }
+          }
+        }}
+      >
         {/* Left: Heading + Bio */}
         <ParallaxSection speed={0.2} className="col-span-1">
           <div>
@@ -130,7 +154,8 @@ export default function Intro() {
             <motion.div 
               className="flex items-start justify-between gap-4"
               initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="flex items-center gap-4">
@@ -138,7 +163,8 @@ export default function Intro() {
                   <motion.h1 
                     className="text-2xl font-semibold leading-tight sm:text-3xl"
                     initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
                     Hi, I&apos;m <span className="text-zinc-100">Prince Sharma</span>
@@ -146,7 +172,8 @@ export default function Intro() {
                   <motion.p 
                     className="mt-1 text-sm text-zinc-400"
                     initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.3 }}
                   >
                     Full Stack Engineer
@@ -159,7 +186,8 @@ export default function Intro() {
             <motion.div 
               className="mt-6 space-y-3 text-md leading-6 text-zinc-300"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p>
@@ -201,7 +229,8 @@ export default function Intro() {
               <motion.div 
                 className="mt-4 flex flex-wrap gap-2"
                 initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
                 <FloatingElement duration={2} distance={3}>
@@ -270,12 +299,13 @@ export default function Intro() {
             </MouseFollow>
           </ParallaxSection>
         </div>
-      </div>
+      </motion.div>
       
       <motion.hr 
         className="my-6 mt-20 border-zinc-800"
         initial={{ opacity: 0, scaleX: 0 }}
-        animate={{ opacity: 1, scaleX: 1 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.8 }}
         style={{ transformOrigin: "left" }}
       />

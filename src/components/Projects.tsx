@@ -147,32 +147,46 @@ const Projects = ({ limit, showMoreLink = false }: ProjectsProps) => {
   const displayed = limit ? projects.slice(0, limit) : projects;
   return (
     <section id='projects' className="relative">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{
-            x: [0, 40, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut"
-          }}
-          className="absolute top-20 right-20 w-36 h-36 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-full blur-2xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -30, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-            delay: 3
-          }}
-          className="absolute bottom-20 left-20 w-28 h-28 bg-gradient-to-tr from-cyan-500/5 to-blue-500/5 rounded-full blur-2xl"
-        />
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
+        {/* Animated background elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, x: 0, y: 0 }}
+            whileInView={{
+              opacity: 1,
+              x: [0, 40, 0],
+              y: [0, -30, 0],
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 2,
+              ease: "easeInOut",
+              times: [0, 0.5, 1]
+            }}
+            className="absolute top-20 right-20 w-36 h-36 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-full blur-2xl"
+          />
+          <motion.div
+            initial={{ opacity: 0, x: 0, y: 0 }}
+            whileInView={{
+              opacity: 1,
+              x: [0, -30, 0],
+              y: [0, 40, 0],
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 2,
+              ease: "easeInOut",
+              delay: 0.5,
+              times: [0, 0.5, 1]
+            }}
+            className="absolute bottom-20 left-20 w-28 h-28 bg-gradient-to-tr from-cyan-500/5 to-blue-500/5 rounded-full blur-2xl"
+          />
+        </div>
 
       <motion.hr 
         className="my-6 border-zinc-800"
@@ -285,6 +299,7 @@ const Projects = ({ limit, showMoreLink = false }: ProjectsProps) => {
           </Link>
         </div>
       )}
+      </motion.div>
     </section>
   )
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,8 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-zinc-950">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950 text-zinc-200 min-h-screen md:px-64 md:py-10`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950 text-zinc-200 min-h-screen md:px-64 md:py-10 cursor-none selection:bg-[#6dc8f2]/30 selection:text-white`}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>

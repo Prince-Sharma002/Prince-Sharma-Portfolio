@@ -41,6 +41,15 @@ const cardVariants: Variants = {
 
 const projects: Project[] = [
   {
+    title: 'MatchConnect',
+    date: 'Febuary 2026',
+    description:
+      'a secure, intimate messaging space designed exclusively for two',
+    tech: ['NextJS','TypeScript', 'Tailwind CSS' , 'Supabase Auth' , 'PostgreSQL'],
+    demo: 'https://thematchconnect.com',
+    image: '/project/matchconnect.png',
+  },
+  {
     title: 'Sofia 🤖',
     date: 'May 2024',
     description:

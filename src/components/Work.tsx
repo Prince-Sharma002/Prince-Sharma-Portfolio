@@ -16,6 +16,14 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
+    company: 'Synomics.In',
+    role: 'Full Stack Developer',
+    date: 'December 2025 - March 2026',
+    location: 'Remote',
+    logo: '/logo/Synomics.png',
+    previewImage: '/drdo.jpeg',
+  },
+  {
     company: 'DRDO SAG ',
     role: 'Full Stack Developer (Intern)',
     date: 'June 2025 - July 2025',
@@ -29,7 +37,7 @@ const experiences: Experience[] = [
     role: 'Full Stack Developer Head',
     date: 'July 2024 - July 2025',
     location: 'ABESIT Campus',
-    logo: '/logo/gdgc.png',
+    logo: '/logo/image.png',
     linkedin: 'https://www.linkedin.com/posts/prince-sharma-047973253_squidhunt-gdgcabesit-ctf-activity-7322531810603675648-KNMX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6c53cBRZ6cLuxGieb3FvPGLWbXCN6UTMs',
     previewImage: '/squid.jpeg',
   },
